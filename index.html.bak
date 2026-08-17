@@ -1,0 +1,3863 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Paper Atelier · Stitch your way to a calmer mind (and a side income, if you want)</title>
+<meta name="description" content="The slow, screen-free hobby thousands of women are using to quiet their minds at night, and quietly turn into a side income from home. No experience needed.">
+<meta name="theme-color" content="#3d5a47"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400,0..100;0,9..144,500,0..100;0,9..144,600,0..100;0,9..144,700,0..100;1,9..144,400,0..100;1,9..144,500,0..100&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ─────────────────────────────────────────────
+     DESIGN TOKENS — The Paper Atelier
+     Strategy: Committed. Sage carries the brand,
+     terracotta is the single CTA accent,
+     blush is supporting warmth.
+     All neutrals tinted toward sage hue.
+     ───────────────────────────────────────────── */
+  :root {
+    /* Surface neutrals — tinted toward sage 140° */
+    --paper:        oklch(98.5% 0.008 110);   /* page background */
+    --paper-warm:   oklch(96.8% 0.012 80);    /* sections, warm cream */
+    --paper-deep:   oklch(94.2% 0.018 95);    /* dividers, raised */
+    --linen:        oklch(91.5% 0.020 90);    /* borders, subtle fills */
+
+    /* Brand sage — the committed color */
+    --sage:         oklch(52% 0.055 145);     /* primary text/brand */
+    --sage-deep:    oklch(38% 0.045 145);     /* headings, dark surfaces */
+    --sage-soft:    oklch(72% 0.045 145);     /* muted accents */
+    --sage-wash:    oklch(94% 0.020 145);     /* tinted backgrounds */
+
+    /* Terracotta — single CTA accent, ~5% of surface */
+    --terracotta:        oklch(58% 0.130 35);
+    --terracotta-deep:   oklch(48% 0.140 32);
+    --terracotta-soft:   oklch(85% 0.060 40);
+
+    /* Blush — supporting warmth, used sparingly */
+    --blush:        oklch(88% 0.035 25);
+    --blush-soft:   oklch(94% 0.020 25);
+
+    /* Text */
+    --ink:          oklch(22% 0.012 145);     /* near-black, sage-tinted */
+    --ink-soft:     oklch(38% 0.018 145);
+    --ink-mute:     oklch(55% 0.015 145);
+
+    /* Functional */
+    --gold:         oklch(72% 0.115 80);      /* stars only */
+    --ok:           oklch(58% 0.085 150);     /* checkmarks */
+
+    /* Geometry */
+    --r-sm: 6px;
+    --r:    12px;
+    --r-lg: 20px;
+    --r-xl: 28px;
+
+    /* Motion */
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Type scale — 1.25 ratio minimum between steps */
+    --t-xs:   13px;
+    --t-sm:   15px;
+    --t-base: 17px;
+    --t-lg:   20px;
+    --t-xl:   26px;
+    --t-2xl:  34px;
+    --t-3xl:  46px;
+    --t-4xl:  62px;
+    --t-5xl:  84px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--t-base);
+    line-height: 1.55;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, oklch(58% 0.045 145 / 0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+    overflow-x: hidden;
+  }
+
+  /* Editorial serif for display type */
+  .serif, h1, h2, h3, .display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+  }
+
+  h1 { font-size: var(--t-4xl); font-weight: 400; }
+  h2 { font-size: var(--t-3xl); font-weight: 500; }
+  h3 { font-size: var(--t-xl); font-weight: 500; line-height: 1.25; }
+
+  p { max-width: 62ch; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ─────────────────────────────────────────────
+     LAYOUT WRAPPERS
+     ───────────────────────────────────────────── */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  /* ─────────────────────────────────────────────
+     ANNOUNCEMENT BAR
+     ───────────────────────────────────────────── */
+  .announce {
+    background: var(--sage-deep);
+    color: var(--paper);
+    text-align: center;
+    padding: 11px 16px;
+    font-size: var(--t-xs);
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    overflow: hidden;
+  }
+  .announce-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .announce-item {
+    white-space: nowrap;
+  }
+  .announce-dot {
+    color: var(--terracotta-soft);
+    font-weight: 700;
+  }
+  .announce .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--terracotta-soft);
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 0 10px;
+    animation: pulse 2.4s var(--ease-out-quart) infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.15); }
+  }
+
+  /* ─────────────────────────────────────────────
+     NAV / LOGO
+     ───────────────────────────────────────────── */
+  .nav {
+    padding: 26px 0 0;
+    text-align: center;
+  }
+  .brandmark {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .brandmark .name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--sage-deep);
+    font-variation-settings: "opsz" 144;
+  }
+  .brandmark .name em {
+    font-style: italic;
+    font-weight: 400;
+  }
+  .brandmark .tag {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .brandmark .rule {
+    width: 80px;
+    height: 1px;
+    background: var(--linen);
+    margin-top: 12px;
+  }
+
+  /* ─────────────────────────────────────────────
+     HERO
+     Mobile-first single column. Centered hierarchy:
+     pill → h1 → sub → trust → video → CTA.
+     Above the fold on phones means CTA visible
+     without extreme scroll.
+     ───────────────────────────────────────────── */
+  .hero {
+    padding: 32px 0 40px;
+    position: relative;
+    text-align: center;
+  }
+  .hero .wrap {
+    max-width: 720px;
+  }
+
+  /* PRINT · CUT · STITCH · REPEAT pill */
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: var(--blush-soft);
+    border: 1px solid oklch(85% 0.040 25);
+    color: var(--terracotta-deep);
+    border-radius: 50px;
+    font-size: var(--t-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  .hero-pill-dot {
+    color: var(--terracotta);
+    opacity: 0.6;
+  }
+
+  .hero-h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.1;
+    font-size: clamp(34px, 5.5vw, 56px);
+    letter-spacing: -0.018em;
+    margin: 0 auto 22px;
+    max-width: 18ch;
+    text-wrap: balance;
+    font-variation-settings: "opsz" 36, "SOFT" 30;
+  }
+  .desktop-br { display: inline; }
+  @media (max-width: 580px) {
+    .desktop-br { display: none; }
+    .hero-h1 { max-width: 14ch; }
+  }
+  .hero-h1 .accent {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--terracotta-deep);
+    font-variation-settings: "opsz" 24, "SOFT" 30;
+    letter-spacing: -0.005em;
+  }
+
+  .hero-sub {
+    font-size: var(--t-base);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 auto 28px;
+    max-width: 48ch;
+  }
+  .hero-sub-highlight {
+    color: var(--ink);
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .hero-sub-highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 8px;
+    background:
+      linear-gradient(180deg, transparent 50%, oklch(85% 0.060 35 / 0.55) 50%);
+    z-index: -1;
+    transform: skewX(-8deg);
+  }
+
+  /* Trust row — avatars + stars + caption */
+  .hero-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 auto 30px;
+    padding: 10px 16px 10px 12px;
+    background: var(--paper-warm);
+    border: 1px solid var(--linen);
+    border-radius: 50px;
+  }
+  .hero-avatars {
+    display: flex;
+    align-items: center;
+  }
+  .hero-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--paper-warm);
+    background: var(--sage-wash);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-avatar + .hero-avatar {
+    margin-left: -10px;
+  }
+  /* Tinted gradient placeholders fallback */
+  .hero-avatar-1 { background: linear-gradient(135deg, oklch(82% 0.045 30), oklch(72% 0.060 25)); }
+  .hero-avatar-2 { background: linear-gradient(135deg, oklch(82% 0.040 80), oklch(72% 0.055 70)); }
+  .hero-avatar-3 { background: linear-gradient(135deg, oklch(82% 0.040 145), oklch(72% 0.045 140)); }
+  .hero-trust-body {
+    text-align: left;
+    line-height: 1.2;
+  }
+  .hero-trust-stars {
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  .hero-trust-caption {
+    font-size: var(--t-xs);
+    color: var(--ink-soft);
+  }
+  .hero-trust-caption strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Video / media wrap */
+  .hero-media-wrap {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto 32px;
+    padding: 14px 14px 18px;
+    background: var(--paper);
+    border-radius: 28px;
+    box-shadow:
+      0 1px 0 oklch(95% 0.020 80),
+      0 30px 60px -30px oklch(38% 0.045 145 / 0.28);
+  }
+  .hero-media-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    background: linear-gradient(135deg, var(--sage-wash), var(--blush-soft));
+    border-radius: 32px;
+    z-index: -1;
+    opacity: 0.7;
+  }
+  .hero-media {
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--paper-warm);
+    box-shadow: 0 4px 12px -4px oklch(38% 0.045 145 / 0.18);
+    position: relative;
+  }
+  .hero-media video,
+  .hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-media-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background:
+      repeating-linear-gradient(45deg,
+        transparent 0 24px,
+        var(--linen) 24px 25px);
+    color: var(--ink-mute);
+    padding: 24px;
+    text-align: center;
+  }
+  .hero-media-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid var(--linen);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terracotta);
+  }
+  .hero-media-tag {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--t-base);
+    color: var(--sage-deep);
+    background: var(--paper);
+    padding: 5px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--linen);
+  }
+  .hero-media-meta {
+    font-size: var(--t-xs);
+    color: var(--ink-mute);
+    max-width: 28ch;
+    line-height: 1.5;
+  }
+
+  /* "Instant access!" pill — floats top-left over the frame */
+  .hero-pill-instant {
+    position: absolute;
+    top: -14px;
+    left: -8px;
+    z-index: 4;
+    background: var(--terracotta);
+    color: var(--paper);
+    padding: 9px 16px;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    box-shadow: 0 8px 20px -6px oklch(58% 0.130 35 / 0.45);
+    transform: rotate(-4deg);
+    white-space: nowrap;
+  }
+
+  /* Floating badge — pattern count (circular sage style) */
+  .hero-badge {
+    position: absolute;
+    z-index: 3;
+  }
+  .hero-badge-patterns {
+    bottom: -16px;
+    right: -16px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--sage-wash);
+    border: 2px solid var(--sage-soft);
+    box-shadow: 0 14px 26px -10px oklch(38% 0.045 145 / 0.32);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    transform: rotate(8deg);
+    padding: 0;
+  }
+  .hero-badge-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--sage-deep);
+    line-height: 1;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero-badge-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  /* Hero CTA */
+  .hero-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-btn {
+    padding: 18px 32px;
+    font-size: var(--t-base);
+  }
+  .hero-cta-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--t-sm);
+    color: var(--ink-soft);
+  }
+  .hero-cta-meta svg { color: var(--sage); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--terracotta);
+    color: var(--paper);
+    padding: 18px 34px;
+    font-size: var(--t-base);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: transform 0.4s var(--ease-out-quart),
+                background-color 0.3s var(--ease-out-quart),
+                box-shadow 0.4s var(--ease-out-quart);
+    box-shadow: 0 4px 16px oklch(58% 0.130 35 / 0.25);
+  }
+  .btn:hover {
+    background: var(--terracotta-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px oklch(58% 0.130 35 / 0.32);
+  }
+  .btn .arrow {
+    transition: transform 0.4s var(--ease-out-quart);
+  }
+  .btn:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* ─────────────────────────────────────────────
+     TRUST MARQUEE — running infinite strip
+     Better on mobile than 2x2 grid of badges
+     ───────────────────────────────────────────── */
+  .trust-marquee {
+    background: var(--sage-deep);
+    color: var(--paper);
+    padding: 18px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .trust-marquee::before,
+  .trust-marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .trust-marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--sage-deep), transparent);
+  }
+  .trust-marquee::after {
+    right: 0;
+    background: linear-gradient(-90deg, var(--sage-deep), transparent);
+  }
+  .trust-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: trust-scroll 40s linear infinite;
+  }
+  .trust-marquee-group {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding-right: 32px;
+    flex-shrink: 0;
+  }
+  .trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--t-sm);
+    color: oklch(92% 0.020 145);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .trust-icon {
+    color: var(--terracotta-soft);
+    flex-shrink: 0;
+  }
+  .trust-sep {
+    color: var(--terracotta-soft);
+    opacity: 0.6;
+    font-size: 12px;
+  }
+  @keyframes trust-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trust-marquee-track { animation: none; }
+  }
+
+  /* ─────────────────────────────────────────────
+     SECTION: WHAT IT IS
+     ───────────────────────────────────────────── */
+  .section {
+    padding: 72px 0;
+  }
+  .section-sage {
+    background: var(--sage-wash);
+  }
+  .section-warm {
+    background: var(--paper-warm);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: var(--t-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .eyebrow.center { display: block; text-align: center; }
+
+  .section h2 {
+    font-size: clamp(30px, 4vw, 50px);
+  }
+  .section-intro {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 44px;
+  }
+  .section-intro h2 { margin-bottom: 16px; }
+  .section-intro p {
+    font-size: var(--t-base);
+    color: var(--ink-soft);
+    margin: 0 auto;
+    max-width: 56ch;
+  }
+
+  /* The story grid — asymmetric, editorial */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .story-text h2 { margin-bottom: 28px; }
+  .story-text p {
+    font-size: var(--t-lg);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .story-text p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .pullquote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--t-2xl);
+    line-height: 1.3;
+    color: var(--sage-deep);
+    padding-left: 32px;
+    border-left: 2px solid var(--sage-soft);
+    margin: 32px 0;
+  }
+
+  /* ─────────────────────────────────────────────
+     SECTION: WHO IT'S FOR
+     Three vignettes — NOT identical cards.
+     Each is a different layout/rhythm.
+     ───────────────────────────────────────────── */
+  .for-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--linen);
+    border-bottom: 1px solid var(--linen);
+  }
+  .for-item {
+    padding: 50px 36px;
+    border-right: 1px solid var(--linen);
+    position: relative;
+  }
+  .for-item:last-child { border-right: none; }
+  .for-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 1;
+    color: var(--terracotta);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .for-item h3 {
+    margin-bottom: 14px;
+  }
+  .for-item p {
+    color: var(--ink-soft);
+    font-size: var(--t-sm);
+  }
+
+  /* ─────────────────────────────────────────────
+     HOW IT WORKS — PrintaBuilds-style
+     Big numbers, simple icons, clear progression
+     ───────────────────────────────────────────── */
+  .how-section {
+    background: var(--paper);
+  }
+  .how-intro {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+  }
+  .how-eyebrow {
+    display: inline-block;
+    font-size: var(--t-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta-deep);
+    font-weight: 700;
+    background: var(--blush-soft);
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 22px;
+  }
+  .how-intro h2 {
+    font-size: clamp(32px, 4.2vw, 50px);
+  }
+  .how-intro h2 em {
+    font-style: italic;
+    color: var(--terracotta-deep);
+    font-variation-settings: "opsz" 144;
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .how-steps::before {
+    content: '';
+    position: absolute;
+    top: 56px;
+    left: 16%;
+    right: 16%;
+    height: 2px;
+    background-image: radial-gradient(circle, var(--sage) 1.5px, transparent 1.5px);
+    background-size: 12px 2px;
+    background-repeat: repeat-x;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  .how-step {
+    background: var(--paper-warm);
+    border: 1px solid var(--linen);
+    border-radius: var(--r-lg);
+    padding: 40px 28px 32px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s var(--ease-out-quart),
+                box-shadow 0.5s var(--ease-out-quart);
+  }
+  .how-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px oklch(38% 0.045 145 / 0.2);
+  }
+  .how-step-num {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 44px;
+    background: var(--terracotta);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    box-shadow: 0 6px 14px oklch(58% 0.130 35 / 0.32);
+    border: 3px solid var(--paper);
+  }
+  .how-step-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: var(--paper);
+    border: 1px solid var(--linen);
+    border-radius: 50%;
+    color: var(--sage-deep);
+    margin: 8px auto 22px;
+  }
+  .how-step h3 {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-xl);
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .how-step p {
+    font-size: var(--t-sm);
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 auto;
+    max-width: 32ch;
+  }
+  .how-cta {
+    text-align: center;
+  }
+
+  /* ─────────────────────────────────────────────
+     SECTION: WHAT'S INSIDE THE STACK
+     ───────────────────────────────────────────── */
+  .stack {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .stack-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--linen);
+    align-items: start;
+  }
+  .stack-item:last-child { border-bottom: none; }
+  .stack-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 36px;
+    color: var(--sage);
+    line-height: 1;
+    min-width: 56px;
+    font-variation-settings: "opsz" 144;
+  }
+  .stack-body h3 {
+    font-size: var(--t-lg);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .stack-body p {
+    color: var(--ink-soft);
+    font-size: var(--t-sm);
+    margin: 0;
+  }
+  .stack-tag {
+    font-size: var(--t-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta-deep);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+  .stack-value {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-lg);
+    color: var(--ink-mute);
+    text-align: right;
+    min-width: 70px;
+    font-weight: 500;
+  }
+  .stack-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 36px;
+    margin-top: 20px;
+    border-top: 1.5px solid var(--sage);
+  }
+  .stack-total .label {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-xl);
+    color: var(--ink);
+  }
+  .stack-total .value {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-2xl);
+    color: var(--sage-deep);
+    font-weight: 500;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: oklch(55% 0.015 145 / 0.5);
+  }
+  .stack-total .value-now {
+    display: inline-block;
+    margin-left: 14px;
+    color: var(--terracotta-deep);
+    font-style: italic;
+    text-decoration: none;
+    font-size: var(--t-xl);
+    font-variation-settings: "opsz" 144;
+  }
+
+  /* Section labels inside the stack — group "method" and "bonuses" */
+  .stack-section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0 8px;
+  }
+  .stack-section-label:first-child {
+    margin-top: 0;
+  }
+  .stack-section-tag {
+    font-size: var(--t-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    font-weight: 600;
+    background: var(--sage-wash);
+    padding: 7px 14px;
+    border-radius: 50px;
+  }
+  .stack-section-tag--bonus {
+    color: var(--terracotta-deep);
+    background: var(--blush-soft);
+  }
+  .stack-section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--linen);
+  }
+  /* Bonus items get a subtle treatment to distinguish from core */
+  .stack-item--bonus .stack-num {
+    color: var(--terracotta);
+    font-size: 28px;
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+  .stack-item--bonus .stack-tag {
+    color: var(--terracotta-deep);
+  }
+
+  /* ─────────────────────────────────────────────
+     PAPERPROFIT-MODELED OFFER (po-*)
+     Cream background, yellow SPECIAL OFFER pill,
+     dashed-border timer card, LAUNCH OFFER tag,
+     terracotta product name, big black price,
+     green checklist, dashed bonuses box,
+     full-width green CTA.
+     Adapted to cottagecore palette.
+     ───────────────────────────────────────────── */
+  .po-offer {
+    background:
+      radial-gradient(ellipse at 20% 0%, var(--blush-soft) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, var(--sage-wash) 0%, transparent 55%),
+      var(--paper-warm);
+    padding: 60px 20px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .po-offer > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Top section */
+  .po-top {
+    max-width: 480px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+  .po-pill-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 18px;
+  }
+  .po-pill {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    font-size: 18px;
+  }
+  .po-pill-yellow {
+    background: oklch(78% 0.150 75);
+    color: var(--ink);
+    box-shadow: 0 3px 0 oklch(60% 0.130 70);
+  }
+  .po-pill-script {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--terracotta-deep);
+    margin-top: 8px;
+    font-variation-settings: "opsz" 144;
+  }
+  .po-subtitle {
+    font-size: var(--t-base);
+    color: var(--ink-soft);
+    margin-bottom: 26px;
+  }
+
+  /* Timer card — dashed border, cream bg */
+  .po-timer-card {
+    border: 2px dashed var(--terracotta);
+    border-radius: var(--r-lg);
+    padding: 18px 22px;
+    background: var(--paper);
+    display: inline-block;
+  }
+  .po-timer-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--t-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta-deep);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .po-timer-clock {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 6px;
+  }
+  .po-timer-unit {
+    background: var(--paper);
+    border: 1px solid var(--linen);
+    border-radius: var(--r);
+    padding: 10px 14px 8px;
+    min-width: 66px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 0 var(--linen);
+  }
+  .po-timer-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .po-timer-lbl {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 6px;
+    font-weight: 700;
+  }
+  .po-timer-sep {
+    align-self: center;
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: var(--terracotta);
+    font-weight: 600;
+    margin-top: -10px;
+  }
+
+  /* The card */
+  .po-card {
+    max-width: 460px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 3px solid var(--terracotta);
+    border-radius: 24px;
+    padding: 40px 28px 28px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 60px -20px oklch(58% 0.130 35 / 0.3);
+  }
+
+  /* Launch tag floating */
+  .po-launch-tag {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: oklch(78% 0.150 75);
+    color: var(--ink);
+    padding: 8px 22px;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: var(--t-xs);
+    letter-spacing: 0.12em;
+    box-shadow: 0 3px 0 oklch(60% 0.130 70);
+    white-space: nowrap;
+  }
+
+  /* Product name */
+  .po-product-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 6vw, 36px);
+    font-weight: 700;
+    color: var(--terracotta-deep);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin: 12px 0 6px;
+    text-transform: uppercase;
+  }
+  .po-product-bundle {
+    font-size: var(--t-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+
+  /* Price row */
+  .po-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .po-price-was {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-xl);
+    color: var(--ink-mute);
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+  }
+  .po-price-save {
+    background: oklch(85% 0.090 145);
+    color: oklch(35% 0.085 145);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .po-price-now {
+    font-family: 'Fraunces', serif;
+    font-size: 84px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 4px 0 4px;
+  }
+  .po-price-meta {
+    font-size: var(--t-xs);
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+  }
+
+  /* Checklist */
+  .po-checklist {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 18px 16px;
+    background: var(--paper-warm);
+    border-radius: var(--r-lg);
+    text-align: left;
+  }
+  .po-checklist li {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: start;
+    gap: 8px;
+    padding: 8px 0;
+    font-size: var(--t-sm);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .po-check {
+    color: oklch(58% 0.130 150);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .po-emoji {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .po-li-text {
+    line-height: 1.45;
+  }
+  .po-li-text em {
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    color: var(--ink-soft);
+    font-variation-settings: "opsz" 144;
+    font-weight: 400;
+  }
+  .po-checklist li strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  /* Highlighted item — LIFETIME access */
+  .po-li-highlight {
+    margin-top: 6px;
+    padding: 10px 12px !important;
+    background: oklch(85% 0.090 145);
+    border-radius: var(--r);
+    border: 1px solid oklch(72% 0.110 150);
+  }
+  .po-li-highlight strong {
+    color: oklch(28% 0.085 145);
+  }
+  .po-li-highlight .po-check {
+    color: oklch(40% 0.110 150);
+  }
+
+  /* Bonuses callout */
+  .po-bonuses {
+    border: 2px dashed oklch(78% 0.150 75);
+    background: oklch(98% 0.040 75 / 0.7);
+    border-radius: var(--r-lg);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    text-align: left;
+  }
+  .po-bonuses-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terracotta-deep);
+    flex-shrink: 0;
+    border: 1px solid oklch(82% 0.080 65);
+  }
+  .po-bonuses-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: var(--t-xs);
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .po-bonuses-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--t-xs);
+  }
+  .po-bonuses-meta s {
+    color: var(--ink-mute);
+    text-decoration-thickness: 1px;
+  }
+  .po-bonuses-today {
+    background: oklch(60% 0.130 150);
+    color: var(--paper);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    font-size: 10px;
+  }
+
+  /* CTA button — full-width green */
+  .po-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: oklch(58% 0.130 150);
+    color: var(--paper);
+    padding: 18px 20px;
+    border-radius: var(--r-lg);
+    text-decoration: none;
+    box-shadow: 0 4px 0 oklch(45% 0.110 150),
+                0 12px 24px -6px oklch(58% 0.130 150 / 0.4);
+    transition: transform 0.3s var(--ease-out-quart),
+                box-shadow 0.3s var(--ease-out-quart),
+                background-color 0.3s;
+    cursor: pointer;
+  }
+  .po-btn:hover {
+    background: oklch(52% 0.140 150);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 oklch(45% 0.110 150),
+                0 14px 28px -6px oklch(58% 0.130 150 / 0.5);
+  }
+  .po-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 oklch(45% 0.110 150),
+                0 8px 16px -4px oklch(58% 0.130 150 / 0.4);
+  }
+  .po-btn-main {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+  }
+  .po-btn-sub {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    opacity: 0.85;
+    font-weight: 500;
+  }
+
+  /* ─────────────────────────────────────────────
+     CHAT TESTIMONIALS — WhatsApp-style cards
+     Three side-by-side chats with photo bubbles.
+     Stack on mobile.
+     ───────────────────────────────────────────── */
+  .chat-section {
+    background: var(--paper-warm);
+  }
+  .chat-intro {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+  }
+  .chat-intro h2 em {
+    font-style: italic;
+    color: var(--terracotta-deep);
+    font-variation-settings: "opsz" 144;
+  }
+  .chat-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: var(--t-sm);
+    color: var(--ink-soft);
+  }
+  .chat-rating .stars {
+    color: var(--gold);
+    letter-spacing: 1.5px;
+  }
+  .chat-rating strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .chat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .chat-card {
+    background: var(--paper);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 40px -20px oklch(38% 0.045 145 / 0.2);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--linen);
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: oklch(35% 0.085 150);
+    color: var(--paper);
+  }
+  .chat-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .chat-avatar-1 { background: linear-gradient(135deg, oklch(70% 0.090 30), oklch(58% 0.130 35)); }
+  .chat-avatar-2 { background: linear-gradient(135deg, oklch(70% 0.080 80), oklch(58% 0.110 70)); }
+  .chat-avatar-3 { background: linear-gradient(135deg, oklch(70% 0.070 145), oklch(52% 0.055 145)); }
+  .chat-meta {
+    flex: 1;
+    min-width: 0;
+  }
+  .chat-name {
+    font-weight: 600;
+    font-size: var(--t-sm);
+    color: var(--paper);
+    margin-bottom: 2px;
+  }
+  .chat-status {
+    font-size: 11px;
+    color: oklch(85% 0.040 150);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chat-online-dot {
+    width: 7px;
+    height: 7px;
+    background: oklch(75% 0.180 145);
+    border-radius: 50%;
+  }
+  .chat-header-icons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: oklch(78% 0.030 150);
+    opacity: 0.85;
+  }
+  .chat-header-icons svg {
+    flex-shrink: 0;
+  }
+  .chat-day {
+    font-size: 11px;
+    color: oklch(80% 0.040 150);
+    background: oklch(45% 0.060 150);
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+  /* Date separator pill INSIDE the chat body, WhatsApp-style */
+  .chat-date-sep {
+    text-align: center;
+    margin: 4px 0 10px;
+  }
+  .chat-date-sep span {
+    display: inline-block;
+    background: oklch(88% 0.025 75 / 0.9);
+    color: oklch(40% 0.020 145);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+    box-shadow: 0 1px 2px oklch(20% 0.012 145 / 0.08);
+  }
+
+  .chat-body {
+    flex: 1;
+    background:
+      radial-gradient(ellipse 200px 80px at 30% 20%, oklch(94% 0.020 145 / 0.6), transparent),
+      radial-gradient(ellipse 200px 100px at 70% 70%, oklch(92% 0.030 75 / 0.4), transparent),
+      oklch(96% 0.015 75);
+    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 300px;
+  }
+  .chat-bubble {
+    max-width: 85%;
+    padding: 9px 12px;
+    border-radius: 12px;
+    font-size: var(--t-sm);
+    line-height: 1.4;
+    position: relative;
+    word-wrap: break-word;
+  }
+  .chat-bubble p {
+    margin: 0;
+    color: var(--ink);
+    font-size: var(--t-sm);
+    line-height: 1.4;
+  }
+  .chat-bubble-in {
+    background: var(--paper);
+    align-self: flex-start;
+    border-top-left-radius: 4px;
+    box-shadow: 0 1px 2px oklch(20% 0.012 145 / 0.1);
+  }
+  .chat-bubble-out {
+    background: oklch(86% 0.075 145);
+    align-self: flex-end;
+    border-top-right-radius: 4px;
+    box-shadow: 0 1px 2px oklch(20% 0.012 145 / 0.1);
+  }
+  .chat-time {
+    display: block;
+    font-size: 10px;
+    color: var(--ink-mute);
+    margin-top: 3px;
+    text-align: right;
+  }
+  .chat-checks {
+    color: oklch(55% 0.140 235);
+    font-weight: 700;
+    margin-left: 4px;
+  }
+  .chat-bubble-img {
+    padding: 5px;
+    max-width: 70%;
+  }
+  .chat-photo {
+    aspect-ratio: 4/5;
+    background:
+      repeating-linear-gradient(45deg,
+        oklch(92% 0.020 75) 0 16px,
+        oklch(88% 0.025 70) 16px 17px);
+    border-radius: 8px;
+    margin-bottom: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chat-photo:not(:has(img))::after {
+    content: '📷 photo slot';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-mute);
+    font-size: 11px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+  .chat-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .chat-footer {
+    padding: 12px 16px;
+    background: var(--paper);
+    border-top: 1px solid var(--linen);
+    text-align: center;
+  }
+  .chat-location {
+    font-size: var(--t-xs);
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+
+  /* ─────────────────────────────────────────────
+     TESTIMONIALS — editorial review style (legacy, kept for fallback)
+     not card grid. Quote-led, photo small.
+     ───────────────────────────────────────────── */
+  .reviews {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 64px 80px;
+  }
+  .review {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .review-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--sage-wash);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-lg);
+    color: var(--sage-deep);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .review-stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .review-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--t-lg);
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .review-name {
+    font-size: var(--t-sm);
+    color: var(--ink-soft);
+  }
+  .review-name strong { color: var(--ink); font-weight: 600; }
+
+  /* ─────────────────────────────────────────────
+     GUARANTEE
+     ───────────────────────────────────────────── */
+  .guarantee {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .guarantee-seal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    background: var(--paper);
+    border: 2px solid var(--sage);
+    border-radius: 50%;
+    margin-bottom: 32px;
+    color: var(--sage-deep);
+  }
+  .guarantee h2 { margin-bottom: 20px; }
+  .guarantee p {
+    font-size: var(--t-lg);
+    color: var(--ink-soft);
+    margin: 0 auto 16px;
+    line-height: 1.65;
+  }
+
+  /* ─────────────────────────────────────────────
+     FAQ — accordion, no cards
+     ───────────────────────────────────────────── */
+  .faq {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--linen);
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 28px 0;
+    text-align: left;
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-lg);
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    transition: color 0.3s var(--ease-out-quart);
+  }
+  .faq-q:hover { color: var(--sage-deep); }
+  .faq-q .plus {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--sage-soft);
+    color: var(--sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.4s var(--ease-out-quart),
+                background 0.3s,
+                color 0.3s;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .faq-item.open .faq-q .plus {
+    transform: rotate(45deg);
+    background: var(--sage);
+    color: var(--paper);
+    border-color: var(--sage);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--ease-out-expo);
+  }
+  .faq-a-inner {
+    padding: 0 0 28px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    max-width: 64ch;
+  }
+  .faq-item.open .faq-a {
+    max-height: 400px;
+  }
+
+  /* ─────────────────────────────────────────────
+     FINAL CTA
+     ───────────────────────────────────────────── */
+  .final {
+    text-align: center;
+    padding: 120px 0;
+  }
+  .final h2 {
+    font-size: clamp(34px, 4.5vw, 60px);
+    max-width: 16ch;
+    margin: 0 auto 24px;
+  }
+  .final h2 em {
+    color: var(--terracotta-deep);
+    font-style: italic;
+    font-variation-settings: "opsz" 144;
+  }
+  .final p {
+    font-size: var(--t-lg);
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+
+  /* ─────────────────────────────────────────────
+     FOOTER
+     ───────────────────────────────────────────── */
+  /* ─────────────────────────────────────────────
+     FOOTER — simple
+     ───────────────────────────────────────────── */
+  footer {
+    background: var(--sage-deep);
+    color: oklch(82% 0.020 145);
+    padding: 48px 0 28px;
+    text-align: center;
+    font-size: var(--t-sm);
+  }
+  .footer-brand {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-xl);
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+  .footer-tag {
+    font-size: var(--t-sm);
+    color: oklch(75% 0.025 145);
+    margin: 0 auto 24px;
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+  footer .copy {
+    color: oklch(65% 0.020 145);
+    font-size: var(--t-xs);
+  }
+
+  /* ─────────────────────────────────────────────
+     BONUS STACK
+     Premium magazine rows. Image + body side by side
+     on desktop, stacked card on mobile.
+     ───────────────────────────────────────────── */
+  .bonus-section {
+    background: var(--paper);
+    padding: 72px 0;
+    position: relative;
+  }
+  .bonus-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: var(--sage-soft);
+  }
+  .bonus-intro {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+  }
+  .bonus-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: var(--blush-soft);
+    color: var(--terracotta-deep);
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .bonus-pill::before {
+    content: '';
+  }
+  .bonus-intro h2 {
+    font-size: clamp(30px, 4vw, 46px);
+    margin-bottom: 14px;
+  }
+  .bonus-intro h2 em {
+    font-style: italic;
+    color: var(--terracotta-deep);
+    font-variation-settings: "opsz" 144;
+  }
+  .bonus-intro p {
+    font-size: var(--t-base);
+    color: var(--ink-soft);
+    margin: 0 auto;
+    max-width: 50ch;
+  }
+
+  /* List of rows */
+  .bonus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 96px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .bonus-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+  }
+  .bonus-row:nth-child(even) .bonus-image {
+    order: 2;
+  }
+  .bonus-image {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--paper-warm);
+    border: 1px solid var(--linen);
+    position: relative;
+  }
+  .bonus-num-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    background: var(--terracotta);
+    color: var(--paper);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--t-xs);
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px oklch(58% 0.130 35 / 0.32);
+    transform: rotate(-3deg);
+  }
+  .bonus-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s var(--ease-out-expo);
+  }
+  .bonus-row:hover .bonus-image img {
+    transform: scale(1.03);
+  }
+
+  /* Text body */
+  .bonus-body .step-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--t-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .bonus-body .step-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--sage-soft);
+  }
+  .bonus-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 2.8vw, 36px);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .bonus-body h3 em {
+    font-style: italic;
+    color: var(--sage-deep);
+    font-variation-settings: "opsz" 144;
+  }
+  .bonus-body .lede {
+    font-size: var(--t-base);
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 22px;
+    max-width: 46ch;
+  }
+  .bonus-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-top: 20px;
+    border-top: 1px solid var(--linen);
+    flex-wrap: wrap;
+  }
+  .bonus-free {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: oklch(85% 0.090 145);
+    color: oklch(28% 0.085 145);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .bonus-free svg { flex-shrink: 0; }
+  .bonus-value {
+    font-size: var(--t-sm);
+    color: var(--ink-soft);
+  }
+  .bonus-value s {
+    margin-right: 4px;
+    text-decoration-thickness: 1.5px;
+  }
+  .bonus-value strong {
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+  }
+
+  /* ─────────────────────────────────────────────
+     CATALOG CAROUSEL
+     Full-bleed scroll-snap horizontal carousel.
+     Cards have varied tag colors via :nth-child
+     so they don't feel like an identical grid.
+     ───────────────────────────────────────────── */
+  .catalog-section {
+    padding: 72px 0 60px;
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .catalog-intro {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+  .catalog-intro h2 {
+    font-size: clamp(34px, 4.4vw, 54px);
+  }
+  .catalog-intro h2 em {
+    font-style: italic;
+    color: var(--terracotta-deep);
+    font-variation-settings: "opsz" 144;
+  }
+  .catalog-intro p {
+    font-size: var(--t-lg);
+    color: var(--ink-soft);
+    margin: 22px auto 0;
+    max-width: 60ch;
+  }
+
+  .catalog-carousel {
+    position: relative;
+    margin-bottom: 36px;
+  }
+  .catalog-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 12px 28px 32px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-padding: 28px;
+  }
+  .catalog-track::-webkit-scrollbar { display: none; }
+
+  /* Center first/last so they don't stick to viewport edges */
+  .catalog-track::before,
+  .catalog-track::after {
+    content: '';
+    flex: 0 0 max(0px, calc((100vw - 1180px) / 2 - 24px));
+  }
+
+  .catalog-card {
+    flex: 0 0 260px;
+    background: var(--paper);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    scroll-snap-align: start;
+    transition: transform 0.6s var(--ease-out-expo),
+                box-shadow 0.6s var(--ease-out-expo);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .catalog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px -24px oklch(38% 0.045 145 / 0.28);
+  }
+  .catalog-media {
+    aspect-ratio: 1 / 1;
+    background: var(--paper-warm);
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--linen);
+  }
+  .catalog-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.4s var(--ease-out-expo);
+  }
+  .catalog-card:hover .catalog-media img {
+    transform: scale(1.05);
+  }
+  .catalog-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background:
+      repeating-linear-gradient(45deg,
+        transparent 0 20px,
+        var(--linen) 20px 21px);
+    color: var(--ink-mute);
+  }
+  .catalog-placeholder-tag {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--t-base);
+    color: var(--sage-deep);
+    background: var(--paper);
+    padding: 6px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--linen);
+  }
+  .catalog-placeholder-meta {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Price pill — floating badge on top of image, PaperProfit style */
+  .catalog-pricepill {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    background: var(--sage-deep);
+    color: var(--paper);
+    padding: 9px 16px;
+    border-radius: 50px;
+    font-size: var(--t-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 6px 16px oklch(20% 0.012 145 / 0.3);
+    white-space: nowrap;
+    z-index: 2;
+  }
+  .catalog-pricepill--alt {
+    background: var(--terracotta-deep);
+  }
+
+  .catalog-body {
+    padding: 18px 8px 6px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .catalog-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-xl);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Carousel controls */
+  .catalog-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .catalog-arrow {
+    width: 48px;
+    height: 48px;
+    background: var(--paper);
+    border: 1px solid var(--linen);
+    color: var(--sage-deep);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s var(--ease-out-quart),
+                color 0.3s,
+                border-color 0.3s,
+                transform 0.3s;
+  }
+  .catalog-arrow:hover {
+    background: var(--sage-deep);
+    color: var(--paper);
+    border-color: var(--sage-deep);
+    transform: translateY(-2px);
+  }
+  .catalog-arrow[disabled] {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none !important;
+    background: var(--paper);
+    color: var(--ink-mute);
+    border-color: var(--linen);
+  }
+
+  .catalog-footnote {
+    text-align: center;
+    font-size: var(--t-xs);
+    color: var(--ink-mute);
+    max-width: 64ch;
+    margin: 28px auto 0;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  /* ─────────────────────────────────────────────
+     WHO IT'S FOR — TABS
+     Tabbed reveal, not 3-card grid.
+     Visual placeholder slot per tab.
+     ───────────────────────────────────────────── */
+  .who-section { background: var(--paper); }
+  .who-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+  }
+  .who-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--paper-warm);
+    border: 1px solid var(--linen);
+    color: var(--ink-soft);
+    padding: 14px 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--t-sm);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.3s var(--ease-out-quart),
+                color 0.3s var(--ease-out-quart),
+                border-color 0.3s var(--ease-out-quart),
+                transform 0.3s var(--ease-out-quart);
+  }
+  .who-tab:hover {
+    color: var(--sage-deep);
+    border-color: var(--sage-soft);
+  }
+  .who-tab.is-active {
+    background: var(--sage-deep);
+    color: var(--paper);
+    border-color: var(--sage-deep);
+  }
+  .who-tab-icon { flex-shrink: 0; }
+
+  .who-panels {
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .who-panel {
+    display: none;
+    animation: fadeIn 0.6s var(--ease-out-quart);
+  }
+  .who-panel.is-active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .who-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .who-text h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .who-text > p {
+    font-size: var(--t-lg);
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 44ch;
+  }
+  .who-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .who-list li {
+    padding: 11px 0 11px 28px;
+    color: var(--ink);
+    font-size: var(--t-sm);
+    border-bottom: 1px solid var(--linen);
+    position: relative;
+  }
+  .who-list li:last-child { border-bottom: none; }
+  .who-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 14px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  /* Image slot for the tab */
+  .who-image-slot {
+    aspect-ratio: 4 / 5;
+    background: var(--paper-warm);
+    border: 1px solid var(--linen);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    position: relative;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .who-image-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .who-image-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background:
+      repeating-linear-gradient(45deg,
+        transparent 0 24px,
+        var(--linen) 24px 25px);
+    color: var(--ink-mute);
+  }
+  .who-image-tag {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--t-lg);
+    color: var(--sage-deep);
+    background: var(--paper);
+    padding: 6px 16px;
+    border-radius: 50px;
+    border: 1px solid var(--linen);
+  }
+  .who-image-meta {
+    font-size: var(--t-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ─────────────────────────────────────────────
+     PROBLEM / AGITATION SECTION
+     Quiet pain, not screaming. Editorial typography.
+     ───────────────────────────────────────────── */
+  .problem-section {
+    background: var(--paper);
+  }
+  .problem-intro {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+  .problem-intro h2 {
+    font-size: clamp(32px, 4.2vw, 50px);
+  }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .pain {
+    text-align: center;
+    padding: 8px 4px;
+  }
+  .pain-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--paper-warm);
+    border: 1px solid var(--linen);
+    color: var(--sage-deep);
+    margin-bottom: 20px;
+  }
+  .pain h3 {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-lg);
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .pain p {
+    font-size: var(--t-sm);
+    color: var(--ink-soft);
+    margin: 0 auto;
+    max-width: 24ch;
+    line-height: 1.5;
+  }
+  .problem-bridge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 56px;
+    flex-wrap: nowrap;
+  }
+  .problem-bridge p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--t-lg);
+    color: var(--sage-deep);
+    margin: 0;
+    white-space: nowrap;
+    font-variation-settings: "opsz" 144;
+  }
+  .bridge-line {
+    flex: 0 0 56px;
+    height: 1px;
+    background: var(--sage-soft);
+  }
+
+  /* ─────────────────────────────────────────────
+     WHY IT WORKS
+     Four cards on sage wash — but each gets a
+     varied internal rhythm via the numbered marks
+     ───────────────────────────────────────────── */
+  .why-section {
+    /* uses section-sage background */
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .why-card {
+    background: var(--paper);
+    border: 1px solid var(--linen);
+    border-radius: var(--r-lg);
+    padding: 36px 32px;
+    position: relative;
+    transition: transform 0.5s var(--ease-out-quart),
+                box-shadow 0.5s var(--ease-out-quart);
+  }
+  .why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px oklch(38% 0.045 145 / 0.2);
+  }
+  .why-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--terracotta);
+    margin-bottom: 18px;
+    font-variation-settings: "opsz" 144;
+  }
+  .why-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: var(--t-xl);
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .why-card p {
+    color: var(--ink-soft);
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 46ch;
+  }
+
+  /* ─────────────────────────────────────────────
+     RESPONSIVE
+     ───────────────────────────────────────────── */
+  @media (max-width: 920px) {
+    .hero { padding: 24px 0 32px; }
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .hero-visual { max-width: 480px; margin: 0 auto; }
+    .story-grid { grid-template-columns: 1fr; gap: 40px; }
+    .for-grid { grid-template-columns: 1fr; }
+    .for-item {
+      border-right: none;
+      border-bottom: 1px solid var(--linen);
+      padding: 36px 0;
+    }
+    .for-item:last-child { border-bottom: none; }
+    .steps { grid-template-columns: 1fr; gap: 48px; }
+    .steps::before { display: none; }
+    .offer-inner { grid-template-columns: 1fr; gap: 50px; }
+    .po-offer { padding: 56px 16px 72px; }
+    .po-card { padding: 32px 22px 22px; }
+    .po-price-now { font-size: 68px; }
+    .po-timer-unit { min-width: 58px; padding: 8px 10px 6px; }
+    .po-timer-num { font-size: 22px; }
+    .po-bonuses { flex-direction: column; text-align: center; gap: 10px; padding: 16px; }
+    .po-bonuses-meta { justify-content: center; }
+    .how-steps {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .how-steps::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 24px;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: auto;
+      background-image: radial-gradient(circle, var(--sage) 1.5px, transparent 1.5px);
+      background-size: 2px 12px;
+      background-repeat: repeat-y;
+      z-index: 0;
+      opacity: 0.5;
+    }
+    .reviews { grid-template-columns: 1fr; gap: 40px; }
+    .chat-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .bonus-list { gap: 28px; max-width: 460px; }
+    .bonus-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+      background: var(--paper-warm);
+      border: 1px solid var(--linen);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .bonus-row:nth-child(even) .bonus-image { order: 0; }
+    .bonus-image {
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid var(--linen);
+      aspect-ratio: 1 / 1;
+    }
+    .bonus-body {
+      padding: 20px 20px 22px;
+    }
+    .bonus-body h3 { font-size: 22px; margin-bottom: 10px; }
+    .bonus-body .lede { font-size: 14px; margin-bottom: 16px; }
+    .bonus-meta { padding-top: 14px; gap: 12px; }
+    .bonus-section { padding: 56px 0; }
+    .bonus-intro { margin-bottom: 36px; }
+    .problem-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 24px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .problem-bridge { margin-top: 50px; }
+    .who-content { grid-template-columns: 1fr; gap: 32px; }
+    .who-image-slot { aspect-ratio: 1/1; max-width: 320px; }
+    .who-tabs { gap: 6px; flex-wrap: nowrap; justify-content: center; margin-bottom: 36px; }
+    .who-tab { padding: 10px 14px; font-size: 13px; gap: 6px; letter-spacing: 0; }
+    .who-tab-icon { width: 14px; height: 14px; }
+    .who-tab-icon svg { width: 14px; height: 14px; }
+    .catalog-section { padding: 72px 0 60px; }
+    .catalog-track { padding: 12px 22px 32px; }
+    .catalog-card { flex-basis: 280px; }
+    .catalog-track::before, .catalog-track::after { flex-basis: 0; }
+    .section { padding: 48px 0; }
+    .final { padding: 48px 0; }
+  }
+
+  @media (max-width: 580px) {
+    body { font-size: 16px; }
+    .wrap, .wrap-narrow { padding: 0 22px; }
+    h1 { font-size: 38px; }
+    h2 { font-size: 30px; }
+    .price-card { padding: 32px 26px; }
+    .price-main { font-size: 56px; }
+    .stack-item {
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+    }
+    .stack-value {
+      grid-column: 2;
+      text-align: left;
+      padding-top: 4px;
+    }
+    .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .btn { width: 100%; }
+    .hero-note { max-width: 180px; padding: 10px 14px; }
+    .problem-grid { grid-template-columns: 1fr; gap: 22px; max-width: 460px; }
+    .pain {
+      text-align: left;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 16px;
+      row-gap: 4px;
+      align-items: start;
+      padding: 14px 0;
+    }
+    .pain-icon {
+      grid-row: 1 / 3;
+      grid-column: 1;
+      margin: 0;
+      width: 44px;
+      height: 44px;
+      align-self: center;
+    }
+    .pain h3 {
+      grid-column: 2;
+      grid-row: 1;
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+    .pain p {
+      grid-column: 2;
+      grid-row: 2;
+      max-width: none;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+      color: var(--ink-soft);
+    }
+    .why-card { padding: 28px 24px; }
+    .stack-total .value-now { display: block; margin-left: 0; margin-top: 4px; }
+    .bonus-features { grid-template-columns: 1fr; gap: 5px; }
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s var(--ease-out-quart),
+                transform 0.8s var(--ease-out-quart);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+  <!-- UTMify Pixel (handles Meta Pixel + CAPI via UTMify) -->
+  <script>window.pixelId = "6a0c2302158e071a487544c6";</script>
+  <script src="js/pixel.js" async="" defer=""></script>
+
+  <!-- UTMify UTM tracker -->
+  <script src="js/latest.js" data-utmify-id="6a0c2302158e071a487544c6" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+
+</head>
+<body>
+
+<!-- ─── ANNOUNCEMENT BAR ─── -->
+<div class="announce">
+  <span class="announce-text">
+    <span class="announce-item">🧵 200 printable patterns</span>
+    <span class="announce-dot">·</span>
+    <span class="announce-item">Instant access</span>
+  </span>
+</div>
+
+<!-- ─── HERO ─── -->
+<header class="hero">
+  <div class="wrap">
+
+    <!-- Top pill: PRINT · CUT · STITCH · REPEAT -->
+    <div class="hero-pill reveal">
+      <span>Print</span>
+      <span class="hero-pill-dot">·</span>
+      <span>Cut</span>
+      <span class="hero-pill-dot">·</span>
+      <span>Stitch</span>
+      <span class="hero-pill-dot">·</span>
+      <span>Repeat</span>
+    </div>
+
+    <h1 class="hero-h1 reveal">
+      Stitch your way to a <span class="accent">calmer mind</span>,<br class="desktop-br"> one slow afternoon at a time.
+    </h1>
+
+    <p class="hero-sub reveal">
+      Get <span class="hero-sub-highlight">200 ready-to-print patterns</span> and start stitching tonight. Print, thread, stitch — no experience needed.
+    </p>
+
+    <!-- Trust row: avatars + stars + caption -->
+    <div class="hero-trust reveal">
+      <div class="hero-avatars">
+        <div class="hero-avatar hero-avatar-1"><img src="images/hero-avatar-1.jpg" alt=""></div>
+        <div class="hero-avatar hero-avatar-2"><img src="images/hero-avatar-2.jpg" alt=""></div>
+        <div class="hero-avatar hero-avatar-3"><img src="images/hero-avatar-3.jpg" alt=""></div>
+      </div>
+      <div class="hero-trust-body">
+        <div class="hero-trust-stars">★★★★★</div>
+        <div class="hero-trust-caption"><strong>4.9 / 5</strong> · Trusted by 2,800+ women worldwide</div>
+      </div>
+    </div>
+
+    <!-- Video / media — sits above the button on mobile, beside on desktop -->
+    <div class="hero-media-wrap reveal">
+      <span class="hero-pill-instant">✨ Instant access!</span>
+      <div class="hero-media" data-slot="hero-loop">
+        <video autoplay="" muted="" loop="" playsinline="">
+          <source src="media/hero-loop.mp4" type="video/mp4">
+        </video>
+      </div>
+      <!-- Floating pattern badge -->
+      <div class="hero-badge hero-badge-patterns">
+        <span class="hero-badge-num">+200</span>
+        <span class="hero-badge-label">patterns</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="hero-cta-wrap reveal">
+      <a href="#offer" class="btn hero-btn">
+        Get The Paper Atelier Method™
+        <span class="arrow">→</span>
+      </a>
+      <div class="hero-cta-meta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+        Instant access · No subscription
+      </div>
+    </div>
+
+  </div>
+</header>
+<!-- ─── PROBLEM / AGITATION ─── -->
+<section class="section problem-section">
+  <div class="wrap">
+    <div class="problem-intro reveal">
+      <span class="eyebrow center">Why this, why now</span>
+      <h2>Does this loop feel familiar?</h2>
+    </div>
+
+    <div class="problem-grid reveal">
+      <div class="pain">
+        <div class="pain-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"></rect><line x1="12" y1="18" x2="12" y2="18"></line></svg>
+        </div>
+        <h3>Scrolling for forty minutes</h3>
+        <p>You meant to rest. You ended up emptier than before.</p>
+      </div>
+      <div class="pain">
+        <div class="pain-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4M3 7v10l9 4 9-4V7M3 7l9 4 9-4M12 11v10"></path></svg>
+        </div>
+        <h3>Hobbies you never finish</h3>
+        <p>Half-knit scarves, an unread book, the watercolour kit still in plastic.</p>
+      </div>
+      <div class="pain">
+        <div class="pain-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+        </div>
+        <h3>Evenings that all blur together</h3>
+        <p>Dinner, TV, phone, bed, repeat. Six months gone in a haze.</p>
+      </div>
+      <div class="pain">
+        <div class="pain-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-8h6v8"></path></svg>
+        </div>
+        <h3>Walls and shelves with no soul</h3>
+        <p>Store-bought decor that could be in anyone's house. Including yours.</p>
+      </div>
+    </div>
+
+    <div class="problem-bridge reveal">
+      <span class="bridge-line"></span>
+      <p>There is a quieter way.</p>
+      <span class="bridge-line"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY IT WORKS ─── -->
+<section class="section section-sage why-section">
+  <div class="wrap">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Why paper embroidery, why now</span>
+      <h2>The almost-forgotten craft that <em>quietly</em> hits four things at once.</h2>
+      <p>It is not a coincidence that 2,800+ women have picked this up in the last twelve months. Paper embroidery sits at the intersection of four things our nervous systems are starving for.</p>
+    </div>
+
+    <div class="why-grid reveal">
+      <article class="why-card">
+        <div class="why-num">i.</div>
+        <h3>Cheap to start</h3>
+        <p>Less than $10 in supplies. A needle, three colors of thread, a printed sheet. Everything else is in your house already.</p>
+      </article>
+      <article class="why-card">
+        <div class="why-num">ii.</div>
+        <h3>Calm that compounds</h3>
+        <p>Twenty minutes in, your breathing slows and your hands take over. By week two, you reach for the needle before the phone.</p>
+      </article>
+      <article class="why-card">
+        <div class="why-num">iii.</div>
+        <h3>Builds skills your phone can't</h3>
+        <p>Focus, patience, fine motor, color sense. Things our eyes and hands forget when we stare at a feed.</p>
+      </article>
+      <article class="why-card">
+        <div class="why-num">iv.</div>
+        <h3>Quietly sellable</h3>
+        <p>Bookmarks at $8. Framed florals at $35. Wedding place cards at $4 each. Etsy buyers actively look for this. You decide if and when.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHO IT'S FOR (TABS) ─── -->
+<section class="section who-section">
+  <div class="wrap">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Who picks this up</span>
+      <h2>Three quiet kinds of beginner.</h2>
+      <p>You don't need to know how to thread a needle. You don't need to call yourself crafty. Pick the one that sounds like you.</p>
+    </div>
+
+    <div class="who-tabs reveal" role="tablist" aria-label="Who is this for">
+      <button class="who-tab is-active" role="tab" aria-selected="true" data-target="who-calm">
+        <svg class="who-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+        <span>For calm</span>
+      </button>
+      <button class="who-tab" role="tab" aria-selected="false" data-target="who-gifts">
+        <svg class="who-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"></rect><path d="M3 12h18M12 8v13M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 12 5 12 8c0-3 2.5-5 4.5-5a2.5 2.5 0 0 1 0 5"></path></svg>
+        <span>For gifts</span>
+      </button>
+      <button class="who-tab" role="tab" aria-selected="false" data-target="who-income">
+        <svg class="who-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span>For income</span>
+      </button>
+    </div>
+
+    <div class="who-panels reveal">
+
+      <div class="who-panel is-active" id="who-calm" role="tabpanel">
+        <div class="who-content">
+          <div class="who-text">
+            <span class="step-label">The one who needs to slow down</span>
+            <h3>You are tired in a way sleep doesn't fix.</h3>
+            <p>The phone makes it worse. You want a thing to do with your hands that isn't laundry. Twenty minutes a night, no screen, no app, no algorithm.</p>
+            <ul class="who-list">
+              <li>A nightly ritual that calms the nervous system</li>
+              <li>Finished pieces you actually keep on your walls</li>
+              <li>Zero pressure to sell or share anything</li>
+            </ul>
+          </div>
+          <div class="who-visual">
+            <div class="who-image-slot" data-slot="who-calm-image">
+              <img src="images/who-calm.jpg" alt="Hands working on paper embroidery with sage and terracotta thread, calm afternoon">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="who-panel" id="who-gifts" role="tabpanel">
+        <div class="who-content">
+          <div class="who-text">
+            <span class="step-label">The one who loves making thoughtful gifts</span>
+            <h3>You want what you give to feel made, not bought.</h3>
+            <p>Birthday cards that get framed. Wedding place settings that get photographed. A new-baby piece that lives above the crib for twenty years.</p>
+            <ul class="who-list">
+              <li>200 patterns covering every occasion</li>
+              <li>Quick wins for last-minute gifting</li>
+              <li>Personalisation that no Hallmark card can match</li>
+            </ul>
+          </div>
+          <div class="who-visual">
+            <div class="who-image-slot" data-slot="who-gifts-image">
+              <img src="images/who-gifts.jpg" alt="Paper-embroidered love card being wrapped as a gift with twine">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="who-panel" id="who-income" role="tabpanel">
+        <div class="who-content">
+          <div class="who-text">
+            <span class="step-label">The one quietly curious about extra income</span>
+            <h3>You've thought about an Etsy shop more than once.</h3>
+            <p>You'd never call it a business. But $400 a month from something beautiful, on your own schedule? Yes, please. The bonus playbook walks you through the first five sales.</p>
+            <ul class="who-list">
+              <li>FairPrice toolkit to price without underselling</li>
+              <li>12 proven scripts for Etsy, Instagram, Pinterest</li>
+              <li>Photography mini-guide so listings actually convert</li>
+            </ul>
+          </div>
+          <div class="who-visual">
+            <div class="who-image-slot" data-slot="who-income-image">
+              <img src="images/who-income.jpg" alt="Paper embroidery piece being packaged for Etsy shipment">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="section how-section">
+  <div class="wrap">
+    <div class="how-intro reveal">
+      <span class="how-eyebrow">✂ Simple as 1, 2, 3</span>
+      <h2>From your printer to a <em>finished piece</em> in one afternoon.</h2>
+    </div>
+
+    <div class="how-steps reveal">
+
+      <div class="how-step">
+        <div class="how-step-num">1</div>
+        <div class="how-step-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"></path></svg>
+        </div>
+        <h3>Print</h3>
+        <p>Download instantly after checkout. Pick a pattern from the 200 inside, print on regular paper or cardstock from any home printer.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="how-step-num">2</div>
+        <div class="how-step-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"></path></svg>
+        </div>
+        <h3>Stitch</h3>
+        <p>Follow the step-by-step video. Twenty minutes in, your hands take over. Less than $10 in supplies, available at any local craft store or online.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="how-step-num">3</div>
+        <div class="how-step-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+        <h3>Keep or sell</h3>
+        <p>Frame it. Gift it. Or list it on Etsy with the bonus playbook. Your call, your pace. Your first sale can happen this weekend.</p>
+      </div>
+
+    </div>
+
+    <div class="how-cta reveal">
+      <a href="#offer" class="btn">
+        Get Instant Access
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CATALOG / WHAT YOU'LL MAKE ─── -->
+<section class="catalog-section">
+  <div class="wrap">
+    <div class="catalog-intro reveal">
+      <span class="eyebrow">What 2,800+ women are stitching</span>
+      <h2>From bookmark to <em>heirloom.</em></h2>
+      <p>200 patterns inside the bundle, organised by what you want to make. Swipe through the categories women are stitching this month, with the rough range each one sells for on Etsy.</p>
+    </div>
+  </div>
+
+  <!-- Full-bleed carousel -->
+  <div class="catalog-carousel reveal" aria-label="Pattern categories">
+    <div class="catalog-track">
+
+      <article class="catalog-card">
+        <div class="catalog-media" data-slot="catalog-cards-bookmarks">
+          <img src="images/catalog-cards-bookmarks.jpg" alt="Three paper-embroidered bookmarks with floral patterns">
+          <span class="catalog-pricepill">Sells for $8$18</span>
+        </div>
+        <div class="catalog-body">
+          <h3>Cards & Bookmarks</h3>
+        </div>
+      </article>
+
+      <article class="catalog-card">
+        <div class="catalog-media" data-slot="catalog-framed-florals">
+          <img src="images/catalog-framed-florals.jpg" alt="Framed paper embroidery wildflower bouquet">
+          <span class="catalog-pricepill">Sells for $28$55</span>
+        </div>
+        <div class="catalog-body">
+          <h3>Framed Florals</h3>
+        </div>
+      </article>
+
+      <article class="catalog-card">
+        <div class="catalog-media" data-slot="catalog-wedding">
+          <img src="images/catalog-wedding.jpg" alt="Wedding place card with embroidered name">
+          <span class="catalog-pricepill">Sells for $4$8 each</span>
+        </div>
+        <div class="catalog-body">
+          <h3>Wedding Place Cards</h3>
+        </div>
+      </article>
+
+      <article class="catalog-card">
+        <div class="catalog-media" data-slot="catalog-baby">
+          <img src="images/catalog-baby.jpg" alt="Baby announcement card with embroidered bird and Hello world">
+          <span class="catalog-pricepill">Sells for $22$45</span>
+        </div>
+        <div class="catalog-body">
+          <h3>Baby Announcements</h3>
+        </div>
+      </article>
+
+      <article class="catalog-card">
+        <div class="catalog-media" data-slot="catalog-mindfulness">
+          <img src="images/catalog-mindfulness.jpg" alt="Be here now paper embroidery on journal">
+          <span class="catalog-pricepill catalog-pricepill--alt">For yourself</span>
+        </div>
+        <div class="catalog-body">
+          <h3>Mindfulness Pieces</h3>
+        </div>
+      </article>
+
+      <article class="catalog-card">
+        <div class="catalog-media" data-slot="catalog-seasonal">
+          <img src="images/catalog-seasonal.jpg" alt="Four seasonal paper embroidery cards">
+          <span class="catalog-pricepill">Sells for $15$40</span>
+        </div>
+        <div class="catalog-body">
+          <h3>Seasonal Pieces</h3>
+        </div>
+      </article>
+
+      <article class="catalog-card">
+        <div class="catalog-media" data-slot="catalog-monograms">
+          <img src="images/catalog-monograms.jpg" alt="M & E monogram paper embroidery card">
+          <span class="catalog-pricepill">Sells for $32$60</span>
+        </div>
+        <div class="catalog-body">
+          <h3>Monograms & Family Names</h3>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Carousel controls -->
+    <div class="catalog-controls">
+      <button class="catalog-arrow catalog-prev" aria-label="Previous">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="catalog-arrow catalog-next" aria-label="Next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="catalog-footnote reveal">
+      Price ranges are observed averages from Etsy listings over the last 90 days. Your prices will depend on materials, finish and audience. The FairPrice toolkit (inside the bundle) helps you set yours.
+    </p>
+  </div>
+</section>
+
+<!-- ─── BONUS STACK ─── -->
+<section class="bonus-section" id="bonuses">
+  <div class="wrap">
+
+    <div class="bonus-intro reveal">
+      <span class="bonus-pill">🎁 Order today, get these free</span>
+      <h2>3 deluxe bonuses, <em>$134 value</em>, free with your order.</h2>
+      <p>Only available when you order today. These won't always be included.</p>
+    </div>
+
+    <div class="bonus-list">
+
+      <!-- BONUS 01 — Your First $500 Playbook -->
+      <article class="bonus-row reveal">
+        <div class="bonus-image">
+          <span class="bonus-num-tag">Bonus 1</span>
+          <img src="images/bonus-01-playbook.jpg" alt="Your First $500 Playbook: sales scripts, annual idea calendar, first 5 sales checklist">
+        </div>
+        <div class="bonus-body">
+          <span class="step-label">From paper to profit</span>
+          <h3>Your First <em>$500</em> Playbook</h3>
+          <p class="lede">
+            The exact roadmap to your first five sales. Scripts, calendar, checklist.
+            So you never have to guess what to post, say, or send.
+          </p>
+          <div class="bonus-meta">
+            <span class="bonus-free">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Included free
+            </span>
+            <span class="bonus-value"><s>$47</s> <strong>Free today</strong></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- BONUS 02 — FairPrice™ Profit Toolkit -->
+      <article class="bonus-row reveal">
+        <div class="bonus-image">
+          <span class="bonus-num-tag">Bonus 2</span>
+          <img src="images/bonus-02-fairprice.jpg" alt="FairPrice Profit Toolkit: Artisan's Notebook, calculator and suppliers guide">
+        </div>
+        <div class="bonus-body">
+          <span class="step-label">Price your craft with confidence</span>
+          <h3>FairPrice™ <em>Profit</em> Toolkit</h3>
+          <p class="lede">
+            The smart calculator that prices a piece in three taps. Add time, materials,
+            margin — get a fair price you can defend. Comes with the Artisan's Notebook
+            and our vetted suppliers list.
+          </p>
+          <div class="bonus-meta">
+            <span class="bonus-free">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Included free
+            </span>
+            <span class="bonus-value"><s>$47</s> <strong>Free today</strong></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- BONUS 03 — The Atelier Showcase Kit -->
+      <article class="bonus-row reveal">
+        <div class="bonus-image">
+          <span class="bonus-num-tag">Bonus 3</span>
+          <img src="images/bonus-03-showcase.jpg" alt="The Atelier Showcase Kit: photography mini-guide, flat-lay templates and Etsy listing formula">
+        </div>
+        <div class="bonus-body">
+          <span class="step-label">Photograph it. List it. Sell it.</span>
+          <h3>The Atelier <em>Showcase</em> Kit</h3>
+          <p class="lede">
+            The visual half of selling. Natural-light flat-lays, ten composition
+            templates, and the Etsy listing formula that turns a scroller into a buyer.
+          </p>
+          <div class="bonus-meta">
+            <span class="bonus-free">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Included free
+            </span>
+            <span class="bonus-value"><s>$40</s> <strong>Free today</strong></span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+<!-- ─── MEGA OFFER — PaperProfit-modeled ─── -->
+<section class="po-offer" id="offer">
+
+  <!-- Top: SPECIAL OFFER pill + timer -->
+  <div class="po-top reveal">
+    <div class="po-pill-stack">
+      <span class="po-pill po-pill-yellow">SPECIAL OFFER</span>
+      <span class="po-pill-script">today only</span>
+    </div>
+    <p class="po-subtitle">One-time payment. Lifetime access.</p>
+
+    <div class="po-timer-card">
+      <div class="po-timer-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        This offer expires in
+      </div>
+      <div class="po-timer-clock" id="megaCountdown">
+        <div class="po-timer-unit"><span class="po-timer-num" data-cd="hours">00</span><span class="po-timer-lbl">Hours</span></div>
+        <div class="po-timer-sep">:</div>
+        <div class="po-timer-unit"><span class="po-timer-num" data-cd="minutes">00</span><span class="po-timer-lbl">Minutes</span></div>
+        <div class="po-timer-sep">:</div>
+        <div class="po-timer-unit"><span class="po-timer-num" data-cd="seconds">00</span><span class="po-timer-lbl">Seconds</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The card itself -->
+  <div class="po-card reveal">
+
+    <!-- Launch tag floating on top -->
+    <div class="po-launch-tag">★ LAUNCH OFFER ★</div>
+
+    <!-- Product name + bundle -->
+    <h3 class="po-product-name">THE PAPER<br>ATELIER</h3>
+    <p class="po-product-bundle">COMPLETE BUNDLE</p>
+
+    <!-- Price row -->
+    <div class="po-price-row">
+      <span class="po-price-was">$295</span>
+      <span class="po-price-save">SAVE 91%</span>
+    </div>
+    <div class="po-price-now">$27</div>
+    <p class="po-price-meta">One-time payment · USD</p>
+
+    <!-- Checklist of inclusions -->
+    <ul class="po-checklist">
+      <li><span class="po-check">✓</span> <span class="po-emoji">📚</span> <span class="po-li-text"><strong>The Complete Method</strong> · 200 patterns + video course</span></li>
+      <li><span class="po-check">✓</span> <span class="po-emoji">⚡</span> <span class="po-li-text">Your First Embroidery in 24 Hours</span></li>
+      <li><span class="po-check">✓</span> <span class="po-emoji">🌿</span> <span class="po-li-text">Quiet Hands, Calm Mind (7-Day Ritual)</span></li>
+      <li><span class="po-check">✓</span> <span class="po-emoji">🎨</span> <span class="po-li-text">Materials list · worldwide</span></li>
+      <li><span class="po-check">✓</span> <span class="po-emoji">📖</span> <span class="po-li-text">Step-by-step illustrated PDF guide</span></li>
+      <li><span class="po-check">✓</span> <span class="po-emoji">🌸</span> <span class="po-li-text">Patterns: florals, baby, wedding, seasonal <em>and much more</em></span></li>
+      <li class="po-li-highlight"><span class="po-check">✓</span> <span class="po-emoji">🚀</span> <span class="po-li-text"><strong>LIFETIME access</strong> · never expires</span></li>
+    </ul>
+
+    <!-- Bonuses callout -->
+    <div class="po-bonuses">
+      <div class="po-bonuses-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+      </div>
+      <div class="po-bonuses-text">
+        <div class="po-bonuses-title">PLUS 3 FREE<br>EXCLUSIVE BONUSES</div>
+        <div class="po-bonuses-meta">
+          <s>Value: $134</s>
+          <span class="po-bonuses-today">TODAY: FREE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <a href="javascript:void(0)" onclick="goToCheckout(event)" class="po-btn">
+      <span class="po-btn-main">GET INSTANT ACCESS  $27</span>
+      <span class="po-btn-sub">Secure checkout · Instant digital delivery</span>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ─── TESTIMONIALS — WhatsApp chat style ─── -->
+<section class="section chat-section">
+  <div class="wrap">
+
+    <div class="chat-intro reveal">
+      <span class="how-eyebrow">💬 Real women, real stitches</span>
+      <h2>They tried it. They <em>loved</em> it.</h2>
+      <p>Real messages from women who picked up paper embroidery with us this month.</p>
+    </div>
+
+    <div class="chat-grid reveal">
+
+      <!-- Chat 1: Megan -->
+      <article class="chat-card">
+        <header class="chat-header">
+          <div class="chat-avatar chat-avatar-1">M</div>
+          <div class="chat-meta">
+            <div class="chat-name">Megan R.</div>
+            <div class="chat-status"><span class="chat-online-dot"></span>online</div>
+          </div>
+          <div class="chat-header-icons">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"></path></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+          </div>
+        </header>
+        <div class="chat-body">
+          <div class="chat-date-sep"><span>TODAY</span></div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>Hi! I just had to tell you my first piece is done 😊</p>
+            <span class="chat-time">10:14 am</span>
+          </div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>I stitched the wildflower pattern. Spent 2 hours on it and didn't touch my phone once 😍</p>
+            <span class="chat-time">10:15 am</span>
+          </div>
+          <div class="chat-bubble chat-bubble-in chat-bubble-img">
+            <div class="chat-photo" data-slot="chat-megan"><img src="images/chat-megan.jpg" alt="Framed embroidery"></div>
+            <span class="chat-time">10:16 am</span>
+          </div>
+          <div class="chat-bubble chat-bubble-out">
+            <p>Megan that looks gorgeous!! 😍👏 Are you framing it?</p>
+            <span class="chat-time">10:22 am <span class="chat-checks">✓✓</span></span>
+          </div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>Already framed! Going above the couch 🖼️ Starting a baby announcement next 🌿</p>
+            <span class="chat-time">10:23 am</span>
+          </div>
+        </div>
+        <footer class="chat-footer">
+          <span class="chat-location">📍 Asheville, NC</span>
+        </footer>
+      </article>
+
+      <!-- Chat 2: Priya -->
+      <article class="chat-card">
+        <header class="chat-header">
+          <div class="chat-avatar chat-avatar-2">P</div>
+          <div class="chat-meta">
+            <div class="chat-name">Priya N.</div>
+            <div class="chat-status">last seen today</div>
+          </div>
+          <div class="chat-header-icons">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"></path></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+          </div>
+        </header>
+        <div class="chat-body">
+          <div class="chat-date-sep"><span>YESTERDAY</span></div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>So I listed three bookmarks on Etsy last Friday...</p>
+            <span class="chat-time">2:05 pm</span>
+          </div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>All three sold by Sunday 🤯 $14 each, someone in Oregon, someone in Texas</p>
+            <span class="chat-time">2:06 pm</span>
+          </div>
+          <div class="chat-bubble chat-bubble-in chat-bubble-img">
+            <div class="chat-photo" data-slot="chat-priya"><img src="images/chat-priya.jpg" alt="Bookmarks ready to ship"></div>
+            <span class="chat-time">2:07 pm</span>
+          </div>
+          <div class="chat-bubble chat-bubble-out">
+            <p>Priya that's incredible!!! 🎉 Did you use the playbook scripts?</p>
+            <span class="chat-time">2:15 pm <span class="chat-checks">✓✓</span></span>
+          </div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>Word for word. The "thank you for your purchase" one got me a 5⭐ review immediately 🙌</p>
+            <span class="chat-time">2:16 pm</span>
+          </div>
+        </div>
+        <footer class="chat-footer">
+          <span class="chat-location">📍 Toronto, ON</span>
+        </footer>
+      </article>
+
+      <!-- Chat 3: Diane -->
+      <article class="chat-card">
+        <header class="chat-header">
+          <div class="chat-avatar chat-avatar-3">D</div>
+          <div class="chat-meta">
+            <div class="chat-name">Diane K.</div>
+            <div class="chat-status">last seen yesterday</div>
+          </div>
+          <div class="chat-header-icons">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"></path></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+          </div>
+        </header>
+        <div class="chat-body">
+          <div class="chat-date-sep"><span>MONDAY</span></div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>I retired in November and dreaded the afternoons 😔</p>
+            <span class="chat-time">11:32 am</span>
+          </div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>Started stitching three weeks ago. Now I look forward to 4pm. Made one for each grandkid this week 💕</p>
+            <span class="chat-time">11:33 am</span>
+          </div>
+          <div class="chat-bubble chat-bubble-in chat-bubble-img">
+            <div class="chat-photo" data-slot="chat-diane"><img src="images/chat-diane.jpg" alt="Three embroidery cards"></div>
+            <span class="chat-time">11:34 am</span>
+          </div>
+          <div class="chat-bubble chat-bubble-out">
+            <p>Diane these are beautiful 🥹 They're going to treasure them</p>
+            <span class="chat-time">11:45 am <span class="chat-checks">✓✓</span></span>
+          </div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>The mindfulness ritual helps the most honestly. Best £20 in years 🌿</p>
+            <span class="chat-time">11:46 am</span>
+          </div>
+        </div>
+        <footer class="chat-footer">
+          <span class="chat-location">📍 Bristol, UK</span>
+        </footer>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+<!-- ─── GUARANTEE ─── -->
+<section class="section section-sage">
+  <div class="wrap">
+    <div class="guarantee reveal">
+      <div class="guarantee-seal">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <polyline points="9 12 11 14 15 10"></polyline>
+        </svg>
+      </div>
+      <span class="eyebrow center">A real, no-fuss guarantee</span>
+      <h2>7 days. No questions. No friction.</h2>
+      <p>
+        Try the full bundle. Watch the lessons. Print the patterns. Try a stitch.
+        If it doesn't fit your life, email us within 7 days and we refund you in
+        full. You keep what you've downloaded. We part as friends.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="section">
+  <div class="wrap-narrow">
+    <div class="section-intro reveal">
+      <span class="eyebrow">Frequently asked</span>
+      <h2>The honest questions, answered.</h2>
+    </div>
+
+    <div class="faq reveal">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          I've never done embroidery in my life. Will I get lost?
+          <span class="plus">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          We built the entire course assuming you've never held a needle. The first
+          two video lessons cover threading, knot-tying and the four basic stitches
+          you'll use for every pattern. Most students finish their first small piece
+          on day one.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What do I actually need to buy to get started?
+          <span class="plus">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Less than $15 of supplies, all available at Joann, Michael's, Amazon or
+          your local craft store. The Smart Shopping List bonus tells you exactly
+          which brands and which thread weights. You probably already own most of it.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How is paper embroidery different from fabric embroidery?
+          <span class="plus">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Paper embroidery uses pre-punched holes in printed cardstock as your guide,
+          which means perfect symmetry every time and a much faster learning curve.
+          No hoop, no fabric tension, no transferring designs. Easier to start, just
+          as beautiful to finish.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Can I really sell what I make?
+          <span class="plus">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Yes, and the bundle is designed for it. Paper-embroidered cards, bookmarks,
+          framed pieces and place cards sell consistently on Etsy and at local
+          markets. The Playbook includes 12 message templates we've tested for
+          finding your first 5 buyers without paid ads.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How long do I get access?
+        <span class="plus">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Forever. You pay once, you keep everything. We also add new patterns and
+          seasonal bonuses every few months at no extra cost, and you get those too.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Is the course in English with English measurements and suppliers?
+          <span class="plus">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Yes, entirely. Native English, US suppliers (Joann, Michael's, Amazon) plus
+          UK, Canadian and Australian options. The FairPrice calculator handles any
+          currency. The calendar lines up with Tier 1 holidays.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What if it's not for me?
+          <span class="plus">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          Just send us an email within 7 days and we'll refund you in full, no forms,
+          no questions. You can keep the files you downloaded. We'd rather you part
+          happy than stay frustrated.
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="final section-warm">
+  <div class="wrap-narrow">
+    <div class="reveal">
+      <span class="eyebrow">One last thing</span>
+      <h2>Tonight, instead of scrolling, <em>stitch.</em></h2>
+      <p>
+        The launch price ends Sunday at midnight Pacific. After that, the bundle
+        moves to $97. Same thing, same tools, three times the price. This is the
+        window.
+      </p>
+      <a href="#offer" class="btn">
+        Yes, I'm in for $27
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="wrap">
+    <h4 class="footer-brand">The Paper Atelier</h4>
+    <p class="footer-tag">Quiet hands. Calm mind. Beautiful paper.</p>
+    <div class="copy">© 2026 The Paper Atelier · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+
+  // Who it's for — tabs
+  document.querySelectorAll('.who-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      // Switch tabs
+      document.querySelectorAll('.who-tab').forEach(t => {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      // Switch panels
+      document.querySelectorAll('.who-panel').forEach(p => p.classList.remove('is-active'));
+      const panel = document.getElementById(target);
+      if (panel) panel.classList.add('is-active');
+    });
+  });
+
+  // Catalog carousel — horizontal scroll with arrow controls
+  (function () {
+    const track = document.querySelector('.catalog-track');
+    const prev = document.querySelector('.catalog-prev');
+    const next = document.querySelector('.catalog-next');
+    if (!track || !prev || !next) return;
+    const scrollByCard = (dir) => {
+      const card = track.querySelector('.catalog-card');
+      if (!card) return;
+      const cardWidth = card.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(track).gap) || 24;
+      track.scrollBy({ left: dir * (cardWidth + gap), behavior: 'smooth' });
+    };
+    prev.addEventListener('click', () => scrollByCard(-1));
+    next.addEventListener('click', () => scrollByCard(1));
+
+    // Update arrow disabled state
+    const updateArrows = () => {
+      const maxScroll = track.scrollWidth - track.clientWidth - 4;
+      prev.toggleAttribute('disabled', track.scrollLeft <= 4);
+      next.toggleAttribute('disabled', track.scrollLeft >= maxScroll);
+    };
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+  })();
+
+  // Countdown — Hours : Minutes : Seconds (rolling 24h)
+  (function () {
+    const el = document.getElementById('megaCountdown');
+    if (!el) return;
+    const nums = {
+      hours: el.querySelector('[data-cd="hours"]'),
+      minutes: el.querySelector('[data-cd="minutes"]'),
+      seconds: el.querySelector('[data-cd="seconds"]'),
+    };
+    // Evergreen 15-hour countdown — first visit starts the clock,
+    // persisted in localStorage so refreshes don't reset.
+    // When it hits 0, it resets to a fresh 15h cycle.
+    const STORAGE_KEY = 'pa_countdown_target';
+    const CYCLE_MS = 15 * 60 * 60 * 1000; // 15 hours
+    function getTarget() {
+      let t = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+      const now = Date.now();
+      if (!t || t <= now) {
+        t = now + CYCLE_MS;
+        try { localStorage.setItem(STORAGE_KEY, t); } catch (e) {}
+      }
+      return t;
+    }
+    let target = getTarget();
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      const diff = target - Date.now();
+      if (diff <= 0) {
+        // Restart for a new cycle
+        target = Date.now() + CYCLE_MS;
+        try { localStorage.setItem(STORAGE_KEY, target); } catch (e) {}
+        return;
+      }
+      const s = Math.floor(diff / 1000);
+      if (nums.hours) nums.hours.textContent = pad(Math.floor(s / 3600));
+      if (nums.minutes) nums.minutes.textContent = pad(Math.floor((s % 3600) / 60));
+      if (nums.seconds) nums.seconds.textContent = pad(s % 60);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // Announcement deadline date — "Sunday May 24" style
+  (function () {
+    const el = document.getElementById('announceDeadline');
+    if (!el) return;
+    const now = new Date();
+    const target = new Date(now);
+    const dayOfWeek = now.getDay();
+    const daysUntilSunday = (7 - dayOfWeek) % 7 || 7;
+    target.setDate(now.getDate() + daysUntilSunday);
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    el.textContent = `Sunday ${months[target.getMonth()]} ${target.getDate()}`;
+  })();
+
+  // Reveal on scroll (IntersectionObserver)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+
+<!-- ============================================================
+     SMART CHECKOUT + UTM CAPTURE + UTMIFY TRACKING
+     Captures UTMs from URL → cookies → sessionStorage (3-layer fallback)
+     Disparador InitiateCheckout on click → redirects to Shopify
+     with preserved UTMs, after clearing previous cart via iframe.
+     ============================================================ -->
+<script>
+(function() {
+  var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','sck','src','xcod'];
+
+  // Save UTMs to sessionStorage on page load (backup layer)
+  (function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    UTM_KEYS.forEach(function(key) {
+      if (urlParams.get(key)) sessionStorage.setItem(key, urlParams.get(key));
+    });
+  })();
+
+  // Read UTMs from URL → cookies → sessionStorage
+  function getUTMs() {
+    var params = {};
+    var urlParams = new URLSearchParams(window.location.search);
+
+    UTM_KEYS.forEach(function(key) {
+      if (urlParams.get(key)) params[key] = urlParams.get(key);
+    });
+    UTM_KEYS.forEach(function(key) {
+      if (!params[key]) {
+        var match = document.cookie.match(new RegExp('(?:^|; )' + key + '=([^;]*)'));
+        if (match) params[key] = decodeURIComponent(match[1]);
+      }
+    });
+    UTM_KEYS.forEach(function(key) {
+      if (!params[key] && sessionStorage.getItem(key)) params[key] = sessionStorage.getItem(key);
+    });
+
+    return params;
+  }
+
+  // Smart checkout function — fires InitiateCheckout, builds Shopify URL with UTMs
+  window.goToCheckout = function(e) {
+    if (e && e.preventDefault) e.preventDefault();
+
+    // Fire InitiateCheckout (UTMify intercepts fbq and handles CAPI)
+    try {
+      if (typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+    } catch(err) {}
+
+    // Idempotency guard — prevent double fire
+    if (window._goCheckoutFired) return;
+    window._goCheckoutFired = true;
+
+    var SHOP = "https://getmykit.thepaperatelier.shop";
+    // Direct checkout permalink — variant ID:quantity, skips /cart page
+    var base = SHOP + "/cart/48475707310263:1";
+
+    var utms = getUTMs();
+    var extra = Object.keys(utms).map(function(k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(utms[k]);
+    }).join('&');
+
+    if (extra) base += (base.indexOf('?') === -1 ? '?' : '&') + extra;
+
+    // Clear previous cart first via hidden iframe, then navigate
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.setAttribute('aria-hidden', 'true');
+    iframe.src = SHOP + '/cart/clear.js?t=' + Date.now();
+    document.body.appendChild(iframe);
+
+    var done = false;
+    var go = function() {
+      if (done) return;
+      done = true;
+      window.location.href = base;
+    };
+    iframe.onload = go;
+    setTimeout(go, 800);
+  };
+})();
+</script>
+
+
+<!-- ============================================================
+     PURCHASE TOAST
+     Social proof: rotating "X from Y just purchased" notifications.
+     Tier 1 buyers (US/UK/CA/AU), names + city pairings plausible.
+     Starts 8s after load, repeats every 22-35s with random delay.
+     ============================================================ -->
+<style>
+  .pt-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    background: var(--paper-warm, #faf6ef);
+    border: 1px solid oklch(86% 0.020 90 / 1);
+    border-radius: 14px;
+    padding: 12px 16px 12px 14px;
+    box-shadow: 0 18px 40px -16px oklch(38% 0.045 145 / 0.32);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 320px;
+    font-family: 'Inter', system-ui, sans-serif;
+    transform: translateY(140%);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .pt-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .pt-toast-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, oklch(85% 0.060 35), oklch(72% 0.090 30));
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 18px;
+  }
+  .pt-toast-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .pt-toast-line1 {
+    font-size: 13px;
+    color: oklch(20% 0.020 145);
+    line-height: 1.35;
+    margin: 0;
+  }
+  .pt-toast-line1 strong {
+    font-weight: 600;
+  }
+  .pt-toast-line2 {
+    font-size: 11px;
+    color: oklch(48% 0.020 145);
+    margin: 3px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .pt-toast-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: oklch(70% 0.140 145);
+    box-shadow: 0 0 0 3px oklch(70% 0.140 145 / 0.22);
+    animation: pt-pulse 1.8s infinite;
+  }
+  .pt-toast-close {
+    background: none;
+    border: none;
+    color: oklch(60% 0.020 145);
+    cursor: pointer;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    transition: background 0.2s;
+  }
+  .pt-toast-close:hover {
+    background: oklch(94% 0.012 90);
+  }
+  @keyframes pt-pulse {
+    0%, 100% { box-shadow: 0 0 0 3px oklch(70% 0.140 145 / 0.22); }
+    50% { box-shadow: 0 0 0 6px oklch(70% 0.140 145 / 0); }
+  }
+  @media (max-width: 580px) {
+    .pt-toast {
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      max-width: none;
+    }
+  }
+</style>
+
+<script>
+(function() {
+  // Tier 1 buyer pool — name + initial + city/region
+  var BUYERS = [
+    ['Sarah M.', 'Austin, TX'],
+    ['Emma K.', 'London, UK'],
+    ['Lauren R.', 'Melbourne, AU'],
+    ['Jessica W.', 'Nashville, TN'],
+    ['Ashley T.', 'Toronto, CA'],
+    ['Megan B.', 'Asheville, NC'],
+    ['Priya P.', 'Toronto, CA'],
+    ['Diane H.', 'Bristol, UK'],
+    ['Olivia S.', 'Sydney, AU'],
+    ['Rachel C.', 'Portland, OR'],
+    ['Charlotte D.', 'Edinburgh, UK'],
+    ['Isabella F.', 'Vancouver, CA'],
+    ['Sophie L.', 'Manchester, UK'],
+    ['Hannah G.', 'Brisbane, AU'],
+    ['Amelia W.', 'Boston, MA'],
+    ['Catherine P.', 'Dublin, IE'],
+    ['Madison K.', 'Denver, CO'],
+    ['Grace H.', 'Auckland, NZ'],
+    ['Eleanor B.', 'Bath, UK'],
+    ['Natalie R.', 'Calgary, CA'],
+    ['Victoria S.', 'Cardiff, UK'],
+    ['Stephanie J.', 'Minneapolis, MN'],
+    ['Caroline E.', 'Adelaide, AU'],
+    ['Beatrice T.', 'Oxford, UK'],
+    ['Rosalind A.', 'Charleston, SC']
+  ];
+
+  var TIME_PHRASES = [
+    'just now',
+    '1 minute ago',
+    '2 minutes ago',
+    '3 minutes ago',
+    '5 minutes ago',
+    '7 minutes ago',
+    '12 minutes ago',
+    'a few minutes ago'
+  ];
+
+  var BONUSES = [
+    'The Paper Atelier Method™',
+    'The Paper Atelier Method™ + Bonuses',
+    'The Paper Atelier Method™ — $27 Launch Offer'
+  ];
+
+  var toast = null;
+  var hideTimer = null;
+  var shownCount = 0;
+  var maxShown = 8; // Max toasts per session, then stop
+
+  function createToast() {
+    var el = document.createElement('div');
+    el.className = 'pt-toast';
+    el.setAttribute('role', 'status');
+    el.setAttribute('aria-live', 'polite');
+    el.innerHTML =
+      '<div class="pt-toast-icon">🧵</div>' +
+      '<div class="pt-toast-body">' +
+        '<p class="pt-toast-line1"><strong class="pt-name"></strong> just purchased <strong class="pt-product"></strong></p>' +
+        '<p class="pt-toast-line2"><span class="pt-toast-dot"></span><span class="pt-time"></span> · <span class="pt-city"></span></p>' +
+      '</div>' +
+      '<button class="pt-toast-close" aria-label="Close notification">' +
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+      '</button>';
+
+    el.querySelector('.pt-toast-close').addEventListener('click', function() {
+      hideToast();
+      shownCount = maxShown; // Stop showing if user dismissed
+    });
+
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function showToast() {
+    if (shownCount >= maxShown) return;
+    if (!toast) toast = createToast();
+
+    var buyer = BUYERS[Math.floor(Math.random() * BUYERS.length)];
+    var time = TIME_PHRASES[Math.floor(Math.random() * TIME_PHRASES.length)];
+    var product = BONUSES[Math.floor(Math.random() * BONUSES.length)];
+
+    toast.querySelector('.pt-name').textContent = buyer[0];
+    toast.querySelector('.pt-city').textContent = buyer[1];
+    toast.querySelector('.pt-time').textContent = time;
+    toast.querySelector('.pt-product').textContent = product;
+
+    toast.classList.add('show');
+    shownCount++;
+
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hideToast, 6500); // Show for 6.5s
+  }
+
+  function hideToast() {
+    if (toast) toast.classList.remove('show');
+  }
+
+  function scheduleNext() {
+    if (shownCount >= maxShown) return;
+    var nextDelay = 22000 + Math.random() * 13000; // 22-35s
+    setTimeout(function() {
+      showToast();
+      setTimeout(scheduleNext, 7000);
+    }, nextDelay);
+  }
+
+  // First toast after 8 seconds
+  setTimeout(function() {
+    showToast();
+    scheduleNext();
+  }, 8000);
+})();
+</script>
+
+
+
+</body></html>
